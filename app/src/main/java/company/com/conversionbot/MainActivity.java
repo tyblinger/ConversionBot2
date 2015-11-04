@@ -37,19 +37,20 @@ public class MainActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,int position, long arg3) {
                 selectUnit1.setSelection(position);
-                    if(position == 0){
+                final String selection = (String) arg0.getItemAtPosition(position);
+                    if(selection.equals("Distance")){
                         selectUnit1.setAdapter(Distance);
                         selectUnit2.setAdapter(Distance);
                     }
-                    else if (position == 1){
+                    else if(selection.equals("Weight")){
                         selectUnit1.setAdapter(Weight);
                         selectUnit2.setAdapter(Weight);
                     }
-                    else if (position == 2){
+                    else if(selection.equals("Temperature")){
                         selectUnit1.setAdapter(Temp);
                         selectUnit2.setAdapter(Temp);
                     }
-                    else if (position == 3){
+                    else if(selection.equals("Volume")){
                         selectUnit1.setAdapter(Volume);
                         selectUnit2.setAdapter(Volume);
                     }
