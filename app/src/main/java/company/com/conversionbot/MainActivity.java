@@ -40,16 +40,16 @@ public class MainActivity extends Activity {
                 selectUnit1.setSelection(position);
 
                     // Depend on first spinner value set adapter to 2nd spinner
-                    if(position == 1){
+                    if(position == 0){
                         selectUnit1.setAdapter(Distance);
                     }
-                    else if (position == 2){
+                    else if (position == 1){
                         selectUnit1.setAdapter(Weight);
                     }
-                    else if (position == 3){
+                    else if (position == 2){
                         selectUnit1.setAdapter(Temp);
                     }
-                    else if (position == 4){
+                    else if (position == 3){
                         selectUnit1.setAdapter(Volume);
                     }
 
