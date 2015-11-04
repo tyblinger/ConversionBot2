@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">ConversionBot</string>
+    <string name="action_settings">Settings</string>
+    <string name="temperature">Temperature</string>
+    <string name="distance">Distance</string>
+    <string name="weight">Weight</string>
+    <string name="selectMeasure">Please Select Measurment</string>
+    <string name="volume">Volume</string>
+    <string name="equals">equals</string>
+    <string name="answer">answer</string>
+    <string name="hint">Enter Unit</string>
+    <string name="hintResult">Result</string>
+    <string name="Prompt">Select Unit</string>
+
+    <color name="inputText">#000000</color>
+    <color name="inputBackground">#008bff</color>
+    <color name="background">#fff0a5</color>
+    <color name="unitOfMeasure">#00ff00</color>
+    <color name="scrollerBackground">#aad5ff</color>
+    <color name="unitOfMeasureBackground">#a7ffa6</color>
+
+    <string-array name="units">
+        <item>Distance</item>
+        <item>Weight</item>
+        <item>Temperature</item>
+        <item>Volume</item>
+    </string-array>
+
+    <string-array name="Distance">
+        <item>inches</item>
+        <item>feet</item>
+        <item>yards</item>
+        <item>miles</item>
+        <item>meters</item>
+        <item>kilometers</item>
+        <item>centimeters</item>
+        <item>millimeters</item>
+    </string-array>
+
+    <string-array name="Volume">
+        <item>gallons</item>
+        <item>quarts</item>
+        <item>pints</item>
+        <item>cups</item>
+        <item>liters</item>
+        <item>milliliters</item>
+        <item>cubic centimeters</item>
+    </string-array>
+
+    <string-array name="Temperature">
+        <item>fahrenheit</item>
+        <item>celsius</item>
+    </string-array>
+
+    <string-array name="Weight">
+        <item>ounces</item>
+        <item>pounds</item>
+        <item>grams</item>
+        <item>kilograms</item>
+    </string-array>
+
+
+</resources>
