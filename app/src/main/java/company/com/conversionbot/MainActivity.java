@@ -27,21 +27,34 @@ public class MainActivity extends Activity {
         selectMeasurement = (Spinner) findViewById(R.id.spinner);
         selectUnit1 = (Spinner) findViewById(R.id.spinner2);
         selectUnit2 = (Spinner) findViewById(R.id.spinner3);
-        
-        ArrayAdapter<String> Volume = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.Volume));
-        ArrayAdapter<String> Distance = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.Distance));
-        ArrayAdapter<String> Weight = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.Weight));
-        ArrayAdapter<String> Temp = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.Temperature));
 
-
-        adapterVolume = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, Volume);
+        final ArrayAdapter<String> Volume = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.Volume));
+        final ArrayAdapter<String> Distance = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.Distance));
+        final ArrayAdapter<String> Weight = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.Weight));
+        final ArrayAdapter<String> Temp = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.Temperature));
 
         selectMeasurement.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,int position, long arg3) {
                 selectUnit1.setSelection(position);
+
+                    // Depend on first spinner value set adapter to 2nd spinner
+                    if(position == 1){
+                        selectUnit1.setAdapter(Distance);
+                    }
+                    else if (position == 2){
+                        selectUnit1.setAdapter(Weight);
+                    }
+                    else if (position == 3){
+                        selectUnit1.setAdapter(Temp);
+                    }
+                    else if (position == 4){
+                        selectUnit1.setAdapter(Volume);
+                    }
+
+
+
             }
 
             @Override
