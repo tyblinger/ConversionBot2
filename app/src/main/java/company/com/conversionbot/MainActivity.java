@@ -19,8 +19,6 @@ public class MainActivity extends Activity {
     Spinner selectUnit2;
     ArrayAdapter<String> adapterVolume;
 
-    String Volume[] = {"gallons", "cups", "pints", "quarts", "liters", "milliliters", "cubic centimeters"};
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +27,12 @@ public class MainActivity extends Activity {
         selectMeasurement = (Spinner) findViewById(R.id.spinner);
         selectUnit1 = (Spinner) findViewById(R.id.spinner2);
         selectUnit2 = (Spinner) findViewById(R.id.spinner3);
+        
+        ArrayAdapter<String> Volume = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.Volume));
+        ArrayAdapter<String> Distance = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.Distance));
+        ArrayAdapter<String> Weight = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.Weight));
+        ArrayAdapter<String> Temp = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.Temperature));
+
 
         adapterVolume = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, Volume);
