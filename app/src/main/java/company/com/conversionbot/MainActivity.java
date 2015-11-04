@@ -38,21 +38,24 @@ public class MainActivity extends Activity {
             public void onItemSelected(AdapterView<?> arg0, View arg1,int position, long arg3) {
                 selectUnit1.setSelection(position);
                 final String selection = (String) arg0.getItemAtPosition(position);
-                    if(selection.equals("Distance")){
-                        selectUnit1.setAdapter(Distance);
-                        selectUnit2.setAdapter(Distance);
-                    }
-                    else if(selection.equals("Weight")){
-                        selectUnit1.setAdapter(Weight);
-                        selectUnit2.setAdapter(Weight);
-                    }
-                    else if(selection.equals("Temperature")){
-                        selectUnit1.setAdapter(Temp);
-                        selectUnit2.setAdapter(Temp);
-                    }
-                    else if(selection.equals("Volume")){
-                        selectUnit1.setAdapter(Volume);
-                        selectUnit2.setAdapter(Volume);
+                    switch(selection){
+                        case "Distance":
+                            selectUnit1.setAdapter(Distance);
+                            selectUnit2.setAdapter(Distance);
+                            break;
+                        case "Weight":
+                            selectUnit1.setAdapter(Weight);
+                            selectUnit2.setAdapter(Weight);
+                            break;
+                        case "Temperature":
+                            selectUnit1.setAdapter(Temp);
+                            selectUnit2.setAdapter(Temp);
+                            break;
+                        case "Volume":
+                            selectUnit1.setAdapter(Volume);
+                            selectUnit2.setAdapter(Volume);
+                            break;
+                        default:
                     }
             }
             @Override
