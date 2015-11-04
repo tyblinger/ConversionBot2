@@ -17,7 +17,6 @@ public class MainActivity extends Activity {
     Spinner selectMeasurement;
     Spinner selectUnit1;
     Spinner selectUnit2;
-    ArrayAdapter<String> adapterVolume;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,25 +37,23 @@ public class MainActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,int position, long arg3) {
                 selectUnit1.setSelection(position);
-
-                    // Depend on first spinner value set adapter to 2nd spinner
                     if(position == 0){
                         selectUnit1.setAdapter(Distance);
+                        selectUnit2.setAdapter(Distance);
                     }
                     else if (position == 1){
                         selectUnit1.setAdapter(Weight);
+                        selectUnit2.setAdapter(Weight);
                     }
                     else if (position == 2){
                         selectUnit1.setAdapter(Temp);
+                        selectUnit2.setAdapter(Temp);
                     }
                     else if (position == 3){
                         selectUnit1.setAdapter(Volume);
+                        selectUnit2.setAdapter(Volume);
                     }
-
-
-
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
 
@@ -64,19 +61,29 @@ public class MainActivity extends Activity {
 
         });
 
-        selectUnit1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
+        selectUnit1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,int position, long arg3) {
 
-                selectMeasurement.setSelection(position);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
 
             }
+        });
 
+        selectUnit2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView<?> arg0, View arg1,int position, long arg3) {
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> arg0) {
+
+            }
         });
 
 
