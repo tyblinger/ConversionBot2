@@ -1,43 +1,50 @@
 package company.com.conversionbot;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class MainActivity extends Activity {
 
+    //Declare
     Spinner selectMeasurement;
     Spinner selectUnit1;
     Spinner selectUnit2;
+    EditText enterMeasurement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Set spinners according to ids from xml
         selectMeasurement = (Spinner) findViewById(R.id.spinner);
         selectUnit1 = (Spinner) findViewById(R.id.spinner2);
         selectUnit2 = (Spinner) findViewById(R.id.spinner3);
 
+        //Set arrays for spinners according to ids from xml
         final ArrayAdapter<String> Volume = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.Volume));
         final ArrayAdapter<String> Distance = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.Distance));
         final ArrayAdapter<String> Weight = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.Weight));
         final ArrayAdapter<String> Temp = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, getResources().getStringArray(R.array.Temperature));
 
+        //Listener for first spinner (Select measurment)
         selectMeasurement.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,int position, long arg3) {
                 selectUnit1.setSelection(position);
+                //Create a string from the spinner position
                 final String selection = (String) arg0.getItemAtPosition(position);
+                    //Switch statement to set spinner 2 and 3 according to spinner 1
                     switch(selection){
                         case "Distance":
                             selectUnit1.setAdapter(Distance);
@@ -65,7 +72,7 @@ public class MainActivity extends Activity {
 
         });
 
-
+        //Listener for spinner 2 (what unit is being converted)
         selectUnit1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,int position, long arg3) {
@@ -78,9 +85,10 @@ public class MainActivity extends Activity {
             }
         });
 
-        selectUnit2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+        //Listener for spinner 3 (what the units are being converted to)
+        selectUnit2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1,int position, long arg3) {
+            public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long arg3) {
 
             }
 
@@ -90,6 +98,26 @@ public class MainActivity extends Activity {
             }
         });
 
+        //Set the variable to be data from text input
+        enterMeasurement=(EditText)findViewById(R.id.editText);
+
+        //Listener for the text input
+        enterMeasurement.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
     }
 
