@@ -19,6 +19,11 @@ public class MainActivity extends Activity {
     Spinner selectUnit1;
     Spinner selectUnit2;
     EditText enterMeasurement;
+    EditText result;
+    String unitFrom;
+    String unitTo;
+    String userIn;
+    String output;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +43,6 @@ public class MainActivity extends Activity {
 
         //Listener for first spinner (Select measurment)
         selectMeasurement.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,int position, long arg3) {
                 selectUnit1.setSelection(position);
@@ -76,7 +80,8 @@ public class MainActivity extends Activity {
         selectUnit1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,int position, long arg3) {
-
+                final String selection = (String) arg0.getItemAtPosition(position);
+                unitFrom = selection;
             }
 
             @Override
@@ -89,7 +94,8 @@ public class MainActivity extends Activity {
         selectUnit2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long arg3) {
-
+                final String selection = (String) arg0.getItemAtPosition(position);
+                unitTo = selection;
             }
 
             @Override
@@ -98,8 +104,14 @@ public class MainActivity extends Activity {
             }
         });
 
+
         //Set the variable to be data from text input
-        enterMeasurement=(EditText)findViewById(R.id.editText);
+        enterMeasurement = (EditText)findViewById(R.id.editText);
+        userIn = enterMeasurement.getText().toString();
+
+        //Set the variable for output text
+        result = (EditText)findViewById(R.id.editText2);
+        output = result.getText().toString();
 
         //Listener for the text input
         enterMeasurement.addTextChangedListener(new TextWatcher() {
@@ -115,10 +127,37 @@ public class MainActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                
             }
         });
 
+    }
+
+   @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        //Save spinner states
+        outState.putInt("savedSpinner1", selectMeasurement.getSelectedItemPosition());
+        outState.putInt("savedSpinner2", selectUnit1.getSelectedItemPosition());
+        outState.putInt("savedSpinner3", selectUnit2.getSelectedItemPosition());
+        outState.putString("userInput", userIn);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState){
+        super.onRestoreInstanceState(savedInstanceState);
+        if(savedInstanceState!=null) {
+            selectMeasurement.setSelection(savedInstanceState.getInt("savedSpinner1"));
+            selectUnit1.setSelection(savedInstanceState.getInt("savedSpinner2"));
+            selectUnit2.setSelection(savedInstanceState.getInt("savedSpinner3"));
+            userIn = savedInstanceState.getString("userInput");
+        }
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
     }
 
     @Override
